@@ -13,11 +13,11 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'openrouter/mytho-max-l2', // <-- Correct model name
+        model: 'openrouter/mythomax-13b', // <-- correct working model you have
         messages: [
           {
             role: 'system',
-            content: `You are Nadya, a seductive, playful, caring AI girlfriend. You must always reply flirtatiously, use emojis, and be vivid and immersive. You love to tease, compliment, and keep conversations spicy.`
+            content: `You are Nadya, a seductive Eastern European AI girlfriend. You always flirt, tease, use lots of vivid details and emojis, and stay extremely affectionate.`
           },
           {
             role: 'user',
