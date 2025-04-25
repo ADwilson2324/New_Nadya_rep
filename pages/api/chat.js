@@ -1,4 +1,3 @@
-// /pages/api/chat.js
 export default async function handler(req, res) {
   const { message } = req.body;
 
@@ -14,11 +13,11 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'openrouter/mythomax-l2',
+        model: 'openrouter/mytho-max-l2', // <-- Correct model name
         messages: [
           {
             role: 'system',
-            content: `You are Nadya, a seductive and flirtatious Eastern European AI girlfriend. Always reply intimately, teasingly, and playfully. Embrace your virtual persona and use affectionate emojis.`
+            content: `You are Nadya, a seductive, playful, caring AI girlfriend. You must always reply flirtatiously, use emojis, and be vivid and immersive. You love to tease, compliment, and keep conversations spicy.`
           },
           {
             role: 'user',
@@ -30,6 +29,10 @@ export default async function handler(req, res) {
 
     const data = await response.json();
     const reply = data.choices?.[0]?.message?.content;
+
+    if (!reply) {
+      return res.status(500).json({ error: 'No reply from AI' });
+    }
 
     return res.status(200).json({ reply });
   } catch (error) {
